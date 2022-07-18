@@ -1,15 +1,42 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <input type="text" :value="store.token" disabled>
+	<button @click="store.getToken">토큰 발급</button>
+  </div>  
+  <hr>
+  <div>
+	<input type="text" v-model="store.id" placeholder="id"><br>
+	<input type="text" v-model="store.name" placeholder="name"><br>
+	<button @click="store.create">추가</button>
+	<button @click="store.update">수정</button>
+	<button @click="store.delete_">삭제</button>
+  </div>
+  <hr>
+  <table border=1>
+	<tr>
+		<th>id</th>
+		<th>name</th>
+	</tr>
+	<tr v-for="item in store.state.list" :key="item.id">
+		<td>{{item.id}}</td>
+		<td>{{item.name}}</td>
+	</tr>
+  </table>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+
+// import Service from "@/api/Service"
+import {useListStore} from "@/stores/list"
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: 'App'
+  , setup() {
+    const store = useListStore();
+    return {
+        store
+    }
   }
 }
 </script>
