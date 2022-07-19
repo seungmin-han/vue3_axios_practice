@@ -3,19 +3,22 @@ import Send from "@/utils/Send.js";
 export default {
     name: "Service",
     
-    getToken() {
+    getToken()
+    {
         return Send({
             url: '/login'
             , method: 'get'
         })
     }
-    , read(token) {
+    , read(token)
+    {
         return Send({
             url: `/${token}/read`
             , method: 'get'
         })
     }
-    , create(token, name) {
+    , create(token, name)
+    {
         return Send({
             url: `/${token}/create`
             , method: 'post'
@@ -24,7 +27,8 @@ export default {
             }
         })
     }
-    , update(token, id, name) {
+    , update(token, id, name)
+    {
         return Send({
             url: `/${token}/update`
             , method: 'post'
@@ -34,7 +38,8 @@ export default {
             }
         })
     }
-    , delete(token, id) {
+    , delete(token, id)
+    {
         return Send({
             url: `/${token}/delete`
             , method: 'post'

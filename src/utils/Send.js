@@ -1,15 +1,19 @@
 import axios from "axios";
 
-const instance = axios.create({
-    baseURL: 'http://localhost:4010/',
-});
+const instance = axios.create(
+    {
+        baseURL: 'http://localhost:4010/',
+    }
+);
 
 instance.interceptors.response.use(
-    function (response) {
+    function (response)
+    {
         return response;
     },
 
-    function (error) {
+    function (error)
+    {
         return Promise.reject(error);
     }
 )
