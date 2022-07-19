@@ -40,7 +40,7 @@ export const useListStore = defineStore("saaa", () =>
         Service.getToken()
         .then((res) =>
         {
-            token.value = res.data.token;
+            token.value = res.data.response.token;
             read();
         })
         .catch((error) =>
