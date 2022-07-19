@@ -14,6 +14,26 @@ export const useListStore = defineStore("saaa", () =>
         }
     );
 
+    function nameCheck() 
+    {
+        if(name.value==null || name.value=="") 
+        {
+            alert("name을 입력하세요.");
+            return false;
+        }
+        return true;
+    }
+
+    function idCheck() 
+    {
+        if(id.value==null || id.value=="") 
+        {
+            alert("id를 입력하세요.");
+            return false;    
+        }
+        return true;
+    }
+
     function getToken()
     {
         if(token.value != "") return;
@@ -24,14 +44,15 @@ export const useListStore = defineStore("saaa", () =>
             read();
         })
         .catch((error) =>
-            {
+        {
             console.log('error', error.response.data.errorMessage);
             warning(error.response);
         })
     }
 
     function create()
-    {
+    {   
+        if (!nameCheck()) return;
         Service.create(token.value, name.value)
         .then((res) =>
         {
@@ -47,6 +68,7 @@ export const useListStore = defineStore("saaa", () =>
 
     function update()
     {
+        if (!nameCheck() || !idCheck()) return;
         Service.update(token.value, id.value, name.value)
         .then((res) =>
         {
@@ -62,6 +84,7 @@ export const useListStore = defineStore("saaa", () =>
 
     function delete_()
     {
+        if (!idCheck()) return;
         Service.delete(token.value, id.value)
         .then((res) =>
         {
@@ -98,8 +121,7 @@ export const useListStore = defineStore("saaa", () =>
 
     function warning(target)
     {
-        alert(target.data.errorMessage);
-        
+        alert(target.data.errorMessage); 
     }
 
     return {

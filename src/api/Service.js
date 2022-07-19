@@ -1,9 +1,8 @@
 import Send from "@/utils/Send.js";
 
 export default {
-    name: "Service",
-    
-    getToken()
+    name: "Service"
+    , getToken()
     {
         return Send({
             url: '/login'
