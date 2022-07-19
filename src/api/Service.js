@@ -37,14 +37,5 @@ export default {
             }
         })
     }
-    , delete(token, id)
-    {
-        return Send({
-            url: `/${token}/delete`
-            , method: 'post'
-            , data: {
-                id: id
-            }
-        })
-    }
+    
 }

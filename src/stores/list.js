@@ -36,7 +36,11 @@ export const useListStore = defineStore("saaa", () =>
 
     function getToken()
     {
-        if(token.value != "") return;
+        // if (token.value != "")
+        // {
+        //     alert("토큰은 1회만 발급 가능합니다.");
+        //     return;  
+        // } 
         Service.getToken()
         .then((res) =>
         {
@@ -82,8 +86,7 @@ export const useListStore = defineStore("saaa", () =>
         })
     }
 
-    function delete_()
-    {
+    function delete_() {
         if (!idCheck()) return;
         Service.delete(token.value, id.value)
         .then((res) =>
